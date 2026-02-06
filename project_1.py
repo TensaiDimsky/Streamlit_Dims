@@ -42,7 +42,7 @@ def projek1():
 
     segment_count.columns = ['Segment', 'Total Customers']
 
-    st.subheader("📊 Number of Customers per Segment")
+    st.write("📊 Number of Customers per Segment")
     st.dataframe(segment_count)
 
     st.bar_chart(
