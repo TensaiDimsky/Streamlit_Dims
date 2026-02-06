@@ -49,61 +49,93 @@ def projek1():
     segment_count.set_index("Segment")["Total Customers"]
     )
 
-    st.markdown("""
-    ### 👑 Champions
-- Customer paling bernilai dengan **frekuensi dan monetary tertinggi**
-- Kontributor utama terhadap total revenue  
 
-**Action:**
-- Program loyalty eksklusif  
-- Retensi dan engagement jangka panjang  
+    st.subheader("👥 Customer Segmentation (RFM) – Business Explanation")
 
----
+    segments = {
+    "Champions": {
+        "desc": "Customer paling bernilai dengan aktivitas tinggi dan transaksi terbaru.",
+        "strategy": [
+            "Loyalty eksklusif",
+            "Priority service",
+            "Retensi jangka panjang"
+        ]
+    },
+    "Loyal Customers": {
+        "desc": "Customer setia dengan frekuensi transaksi konsisten.",
+        "strategy": [
+            "Program loyalti",
+            "Reward berbasis aktivitas",
+            "Upselling ringan"
+        ]
+    },
+    "Potential Loyalist": {
+        "desc": "Customer dengan potensi tinggi untuk menjadi loyal.",
+        "strategy": [
+            "Personalized promotion",
+            "Cross-selling",
+            "Edukasi produk"
+        ]
+    },
+    "New/Promising": {
+        "desc": "Customer baru dengan aktivitas transaksi terbaru.",
+        "strategy": [
+            "Welcome campaign",
+            "Onboarding",
+            "First-purchase incentive"
+        ]
+    },
+    "Need Attention": {
+        "desc": "Customer yang mulai menunjukkan penurunan aktivitas.",
+        "strategy": [
+            "Reminder",
+            "Re-engagement campaign",
+            "Follow-up personal"
+        ]
+    },
+    "At Risk": {
+        "desc": "Customer bernilai yang sudah lama tidak bertransaksi.",
+        "strategy": [
+            "Win-back campaign",
+            "Limited-time offer",
+            "Survey feedback"
+        ]
+    },
+    "Hibernating": {
+        "desc": "Customer lama dengan kontribusi rendah.",
+        "strategy": [
+            "Low-cost marketing",
+            "Re-engagement ringan",
+            "Tidak jadi prioritas"
+        ]
+    }
+        }
 
-### 🌟 Potential Loyalist
-- Customer dengan potensi tinggi untuk menjadi Champions  
-- Frekuensi transaksi stabil dan monetary menengah–tinggi  
+    selected_segment = st.selectbox(
+    "📌 Pilih Segment Customer",
+    list(segments.keys())
+    )
 
-**Action:**
-- Personalized promotion  
-- Upselling & cross-selling  
+    st.subheader(f"🔍 {selected_segment}")
 
----
+    st.write(segments[selected_segment]["desc"])
 
-### 🆕 New / Promising
-- Customer baru dengan aktivitas transaksi terbaru  
-- Masih memiliki frekuensi dan monetary rendah  
+    st.markdown("### 🎯 Recommended Business Strategy")
+    for s in segments[selected_segment]["strategy"]:
+        st.markdown(f"- {s}")
 
-**Action:**
-                - Welcome campaign  
-- Edukasi produk dan onboarding  
-
----
-
-### ⚠️ At Risk
-- Customer dengan riwayat transaksi baik namun sudah lama tidak aktif  
-- Berisiko tinggi churn  
-
-**Action:**
-- Win-back campaign  
-- Reminder & limited-time offer  
-
----
-### 🧊 Low Value / Hibernating
-- Kontribusi revenue rendah  
-- Tidak menjadi prioritas utama  
-
-**Action:**
-- Low-cost marketing  
-- Re-engagement ringan  
-""")
-    
-    st.success("""
-### 📈 Recommended Action Plan
+  
+    st.subheader("""
+📈 Recommended Action Plan
 - Prioritaskan **loyalty program** untuk Champions di top cities
 - Jalankan **personalized promotion** untuk Potential Loyalist di kota utama
 - Alokasikan budget marketing berdasarkan **segment + lokasi**
 """)
+    st.success('''👉 **Prediksi Bisnis:**
+Jika perusahaan memfokuskan strategi **retensi dan upselling customer bernilai tinggi**
+di **5 kota dengan total sales terbesar**, maka potensi peningkatan revenue akan
+lebih optimal dibanding strategi yang bersifat general.''')
+    
 
                 
 
